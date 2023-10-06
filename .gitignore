@@ -1,0 +1,15 @@
+.VSCodeCounter/
+*.bak
+*.zip
+.filesCounter/
+.build/
+node_modules/
+REVISION_HISTORY
+REVISION
+checkFilesChangeSinceLastTag.sh
+out
+signed/
+.buildSystem/
+lex-import/
+lex-export/
+TrendLexiconDE/
