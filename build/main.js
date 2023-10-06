@@ -1,0 +1,26 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+/* eslint-disable no-console */
+const buntstift_1 = require("buntstift");
+const trie_1 = require("./trie");
+buntstift_1.buntstift.header('Trie Search Engine');
+const tree = new trie_1.Trie();
+tree.addWord('go');
+tree.addWord('golo');
+tree.addWord('golang');
+tree.addWord('goroutine');
+buntstift_1.buntstift.info('Search for: go');
+console.log(tree.searchWord('go'));
+buntstift_1.buntstift.line();
+buntstift_1.buntstift.info('Search for: gol');
+console.log(tree.searchWord('gol'));
+buntstift_1.buntstift.line();
+buntstift_1.buntstift.info('Search for: golo');
+console.log(tree.searchWord('golo'));
+buntstift_1.buntstift.line();
+buntstift_1.buntstift.info('Search for: gor');
+console.log(tree.searchWord('gor'));
+buntstift_1.buntstift.line();
+buntstift_1.buntstift.info('Search for: gorr');
+console.log(tree.searchWord('gorr'));
+buntstift_1.buntstift.line();

@@ -4,20 +4,26 @@
   "description": "Challenges from TNW's Coding Circle",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "tsc -b && mocha --recursive \"./build/**/test.js\"",
+    "trie": "tsc -b && node build/main.js"
   },
   "repository": {
-	"url": "https://github.com/SheepCreativeSoftware/coding-circle.git"
-},
+    "url": "https://github.com/SheepCreativeSoftware/coding-circle.git"
+  },
   "keywords": [
     "coding-circle"
   ],
   "author": "Marina Egner",
   "license": "MIT",
   "devDependencies": {
+    "@types/mocha": "^10.0.2",
     "@typescript-eslint/eslint-plugin": "^6.7.4",
     "@typescript-eslint/parser": "^6.7.4",
     "eslint": "^8.50.0",
+    "mocha": "^10.2.0",
     "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "buntstift": "^5.0.2"
   }
 }

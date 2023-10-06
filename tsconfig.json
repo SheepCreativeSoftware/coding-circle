@@ -1,8 +1,9 @@
 {
 	"compilerOptions": {
 		"target": "ESNext",
-		"module": "ESNext",
-		"lib": ["ESNext"],
+		"module": "NodeNext",
+		"lib": ["DOM", "ESNext"],
+		"outDir": "build",
 		"strict": true,
 		"skipLibCheck": true,
 		"forceConsistentCasingInFileNames": true,

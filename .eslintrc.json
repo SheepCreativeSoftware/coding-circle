@@ -13,7 +13,7 @@
         "ecmaVersion": "latest"
     },
 	"plugins": ["@typescript-eslint"],
-    "ignorePatterns": ["node_modules/**/*"],
+    "ignorePatterns": ["node_modules/**/*", "build/**/*", "/**/test.js"],
 	"rules": {
 		"indent": [
 			"error",
@@ -21,7 +21,7 @@
 		],
 		"linebreak-style": [
 			"error",
-			"windows"
+			"unix"
 		],
 		"quotes": [
 			"error",
