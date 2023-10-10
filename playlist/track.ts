@@ -19,19 +19,9 @@ class Track {
 		this.nextTrack = new Track(trackNumber, interpret, trackName);
 	}
 
-	/** Checks if a track has another track appended */
-	hasNextTrack(): boolean {
-		return typeof this.nextTrack !== 'undefined';
-	}
-
 	/** Outputs the current track number */
 	getTrackNumber(): number {
 		return this.trackNumber;
-	}
-
-	/** Outputs the next Track */
-	getNextTrack(): Track | undefined {
-		return this.nextTrack;
 	}
 
 	/** Outputs the next Track */

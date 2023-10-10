@@ -25,10 +25,12 @@ class Playlist {
 		}
 
 		// Loop though to get the last Track
-		while(currentTrack?.hasNextTrack()) currentTrack = currentTrack?.getNextTrack();
+		while(typeof currentTrack.nextTrack !== 'undefined') currentTrack = currentTrack.nextTrack;
 
-		// Appends the Track to the last element
-		if(!currentTrack?.hasNextTrack()) currentTrack?.addTrack(currentTrack.getTrackNumber() + incrementByOne, interpret, trackName);
+		if(typeof currentTrack.nextTrack === 'undefined') {
+			// Appends the Track to the last element
+			currentTrack.addTrack(currentTrack.getTrackNumber() + incrementByOne, interpret, trackName);
+		}
 	}
 
 	/** Outputs the lsit as json stringified List */
@@ -37,30 +39,31 @@ class Playlist {
 	}
 
 	/** Removes the next track and keep every following track */
-	private removeOnlyNextTrack(thatTrack: Track | undefined) {
-		if(typeof thatTrack === 'undefined') throw new Error('Cannot delete undefinded');
-		thatTrack.setNextTrack(thatTrack.getNextTrack()?.getNextTrack());
+	private removeOnlyNextTrack(thatTrack: Track) {
+		if(thatTrack && thatTrack.nextTrack) thatTrack.setNextTrack(thatTrack.nextTrack.nextTrack);
+		else throw new Error('Cannot delete undefinded');
 	}
 
+	/** Removes elements begining at the position from the end */
 	removeTrackFromEnd(elementPosition: number) {
 		let currentTrack = this.root;
 		if(typeof currentTrack === 'undefined') throw new Error('Playlist has no track');
 
 		// Loop through every the complete list
-		while(currentTrack.hasNextTrack()) {
-			currentTrack = currentTrack?.getNextTrack();
-			let currentNextTrack = currentTrack;
+		while(typeof currentTrack.nextTrack !== 'undefined') {
+			let currentNextTrack = currentTrack as Track | undefined;
 
 			// Check whether the Track is followed by at least that many Track as we search for
 			for(let index = 0; index <= elementPosition; index++) {
-				if(index === elementPosition && !currentNextTrack?.hasNextTrack()) {
-					// Found the last element if it has no next track
+				if(typeof currentNextTrack === 'undefined') throw new Error('Tracklist shorter than search position');
+				if(index === elementPosition && typeof currentNextTrack.nextTrack === 'undefined') {
+					// Found the last element if it has no next track and is on the right position
 					this.removeOnlyNextTrack(currentTrack);
 					return;
 				}
-				currentNextTrack = currentNextTrack?.getNextTrack();
+				currentNextTrack = currentNextTrack.nextTrack;
 			}
-			if(typeof currentTrack === 'undefined') throw new Error('Element not found');
+			currentTrack = currentTrack.nextTrack;
 		}
 	}
 }
