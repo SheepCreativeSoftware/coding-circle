@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "tsc -b && mocha --recursive \"./build/**/test.js\"",
-    "trie": "tsc -b && node build/main.js"
+    "trie": "tsc -b && node build/trie/main.js",
+	"playlist": "tsc -b && node build/playlist/main.js"
   },
   "repository": {
     "url": "https://github.com/SheepCreativeSoftware/coding-circle.git"

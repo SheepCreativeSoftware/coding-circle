@@ -1,0 +1,20 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+/* eslint-disable no-console */
+const buntstift_1 = require("buntstift");
+const playlist_1 = require("./playlist");
+const playlist = new playlist_1.Playlist;
+const secondLastElement = 2;
+buntstift_1.buntstift.header('Playlist challange');
+playlist.addTrackToList('Magraina', 'The Song');
+playlist.addTrackToList('Magraina', 'The Orchestra');
+playlist.addTrackToList('Magraina', 'Last bit has left');
+playlist.addTrackToList('Magraina', 'Funny moments');
+playlist.addTrackToList('Magraina', 'The Final Song');
+buntstift_1.buntstift.info('Output full list');
+console.log(playlist.outputList());
+buntstift_1.buntstift.line();
+console.log(playlist.removeTrackFromEnd(secondLastElement));
+buntstift_1.buntstift.info('Output full list without the second to last element');
+console.log(playlist.outputList());
+buntstift_1.buntstift.line();
