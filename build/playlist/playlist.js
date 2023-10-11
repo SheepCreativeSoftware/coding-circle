@@ -41,6 +41,7 @@ class Playlist {
         else
             throw new Error('Cannot delete undefinded');
     }
+    /** Removes elements begining at the position from the end */
     removeTrackFromEnd(elementPosition) {
         let currentTrack = this.root;
         if (typeof currentTrack === 'undefined')
