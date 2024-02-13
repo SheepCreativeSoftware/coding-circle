@@ -27,7 +27,7 @@ const encode = (plainText) => {
             currentChar = char;
         }
     }
-    // Store last result as loop ends without storing the values
+    // Store last result as loop ends before storing the last values
     if (currentCount !== zero)
         encodedText += `${currentCount}${currentChar}`;
     return encodedText;
@@ -39,11 +39,17 @@ const multiplyChar = (char, count) => {
         result += char;
     return result;
 };
+const factor = 10;
 const decode = (encodedText) => {
     let currentCount = zero;
     let currentChar = '';
     let decodedText = '';
     for (const char of encodedText) {
+        // If number is bigger than
+        if (currentCount > zero && !isNaN(Number(char))) {
+            currentCount = currentCount * factor + Number(char);
+            continue;
+        }
         // String contains numbers and strings - separate them by checking for NaN
         if (isNaN(Number(char)))
             currentChar = char;

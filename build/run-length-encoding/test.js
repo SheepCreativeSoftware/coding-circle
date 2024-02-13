@@ -36,4 +36,16 @@ describe('#Test Run length encoding', () => {
         const result = (0, main_1.decode)(testString);
         assert.strictEqual(result, 'ABBCCCDDDD');
     });
+    it('Should decode and Encode all characters from A-Z', () => {
+        const testString = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const encodedString = (0, main_1.encode)(testString);
+        const result = (0, main_1.decode)(encodedString);
+        assert.strictEqual(result, testString);
+    });
+    it('Should decode and Encode when there are more then 10 char of the same in a sequence', () => {
+        const testString = 'ABCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDD';
+        const encodedString = (0, main_1.encode)(testString);
+        const result = (0, main_1.decode)(encodedString);
+        assert.strictEqual(result, testString);
+    });
 });

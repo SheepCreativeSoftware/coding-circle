@@ -184,7 +184,18 @@
 				"ignoreDefaultValues": true
 			}
 		],
-		"no-mixed-operators": "error",
+		"no-mixed-operators": [
+			"error",
+			{	
+				"groups": [
+					["&", "|", "^", "~", "<<", ">>", ">>>"],
+					["==", "!=", "===", "!==", ">", ">=", "<", "<="],
+					["&&", "||"],
+					["in", "instanceof"]
+				],
+				"allowSamePrecedence": true
+			}
+		],
 		"no-multi-assign": "error",
 		"no-multi-str": "error",
 		"no-negated-condition": "error",
