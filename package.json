@@ -4,7 +4,8 @@
   "description": "Challenges from TNW's Coding Circle",
   "main": "app.js",
   "scripts": {
-    "test": "tsc -b && mocha --recursive \"./build/**/test.js\"",
+    "except-for-one": "tsc -b && node build/exceptForOne/main.js",
+	"test": "tsc -b && mocha --recursive \"./build/**/test.js\"",
     "median": "tsc -b && node build/median/main.js",
 	"trie": "tsc -b && node build/trie/main.js",
 	"playlist": "tsc -b && node build/playlist/main.js"

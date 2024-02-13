@@ -7,6 +7,7 @@ const previousElement = 1;
 /** Calculates the median of the given array */
 const calcMedian = (numbers) => {
     const middle = Math.floor(numbers.length / halfOfThat);
+    // Destructuring is needed to not change the original array and make a sorted copy
     const sortedNumbers = [...numbers].sort((first, second) => first - second);
     if ((0, even_1.isEven)(numbers.length))
         return (sortedNumbers[middle - previousElement] + sortedNumbers[middle]) / halfOfThat;
