@@ -16,6 +16,4 @@ const changeList = [
 /* eslint-enable no-magic-numbers */
 const startState = 0;
 const iterations = 10_000;
-console.time('Time');
 console.log((0, markov_1.markov)(startState, iterations, changeList));
-console.timeEnd('Time');
