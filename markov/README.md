@@ -46,10 +46,11 @@ Mit den 3 Ergebnissen kann dann die Rechnung wieder wiederholt werden.
 
 Beispiel:
 Start: A
-   zv0    zv1     zv2     zv3
-A: 1(x)   0.9    0.8275   0,7745
-B: 0(y)   0.075  0.13375  0,17875
-C: 0(z)   0.025  0.03875  0,04675
+   zv0    zv1     zv2     zv3       zvX
+A: 1(x)   0.9    0.8275   0,7745   0,6250
+B: 0(y)   0.075  0.13375  0,17875  0,3125
+C: 0(z)   0.025  0.03875  0,04675  0,0625
+-----Werte stabilisieren sich------>>
 ```
 
 
