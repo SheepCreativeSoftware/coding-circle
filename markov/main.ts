@@ -16,6 +16,5 @@ const changeList: ChangeList = [
 
 const startState = 0;
 const iterations = 10_000;
-console.time('Time');
+
 console.log(markov(startState, iterations, changeList));
-console.timeEnd('Time');

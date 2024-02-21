@@ -47,7 +47,7 @@ const markov = (startState: number, iterations: number, changeList: ChangeList) 
 		const newResults = calcResults(currentResults, changeList, iterations);
 
 		// Stop when results are repeating (at a certain point they do)
-		if(newResults[0] === currentResults[0]) break;
+		if(newResults.every((value, indexArray) => value === currentResults[indexArray])) break;
 
 		// Copy new results in existing array
 		currentResults.splice(0, currentResults.length, ...newResults);
