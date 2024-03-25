@@ -1,7 +1,7 @@
 type States = number[];
 type ChangeList = States[];
 
-/** Calculates a single transition */
+/** Calculates the likelihood of for one state */
 const calcState = (lastResults: number[], stateList: States, iterations: number) => {
 	let result = 0;
 	for(let index = 0; index < stateList.length; index++) {
@@ -14,7 +14,7 @@ const calcState = (lastResults: number[], stateList: States, iterations: number)
 	return Math.round(result * iterations) / iterations;
 };
 
-/** Calculates the Square of transitions */
+/** Calculates the likelihood of all states */
 const calcResults = (lastResults: number[], changeList: ChangeList, iterations: number) => {
 	const newResults = Array(lastResults.length).fill(0) as number[];
 	for(let index = 0; index < changeList.length; index++) {
@@ -38,7 +38,7 @@ const resultToObject = (results: number[]) => {
 	return object;
 };
 
-/** Returns the number of possible states for each transition vector */
+/** Calculates the number of possible states in an iteration of state changes, based on transition vectors */
 const markov = (startState: number, iterations: number, changeList: ChangeList) => {
 	const currentResults = Array(changeList.length).fill(0) as number[];
 	currentResults[startState] = 1;
@@ -46,7 +46,7 @@ const markov = (startState: number, iterations: number, changeList: ChangeList) 
 	for(let index = 0; index < iterations; index++) {
 		const newResults = calcResults(currentResults, changeList, iterations);
 
-		// Stop when results are repeating (at a certain point they do)
+		// Stop when results are repeating (at a certain point they are stabilize; probably after <1% of the iterations have happened)
 		if(newResults.every((value, indexArray) => value === currentResults[indexArray])) break;
 
 		// Copy new results in existing array
