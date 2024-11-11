@@ -62,4 +62,4 @@ jobs:
             - name: Install dependencies
               run: npm ci
             - name: Run Unit Tests
-              run: nmp run test
+              run: npm run test
