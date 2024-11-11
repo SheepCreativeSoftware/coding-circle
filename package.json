@@ -1,32 +1,35 @@
 {
-  "name": "coding-circle",
-  "version": "1.0.0",
-  "description": "Challenges from TNW's Coding Circle",
-  "main": "app.js",
-  "scripts": {
-    "except-for-one": "tsc -b && node build/exceptForOne/main.js",
-	"test": "tsc -b && mocha --recursive \"./build/**/test.js\"",
-    "median": "tsc -b && node build/median/main.js",
-	"trie": "tsc -b && node build/trie/main.js",
-	"playlist": "tsc -b && node build/playlist/main.js"
-  },
-  "repository": {
-    "url": "https://github.com/SheepCreativeSoftware/coding-circle.git"
-  },
-  "keywords": [
-    "coding-circle"
-  ],
-  "author": "Marina Egner",
-  "license": "MIT",
-  "devDependencies": {
-    "@types/mocha": "^10.0.2",
-    "@typescript-eslint/eslint-plugin": "^6.7.4",
-    "@typescript-eslint/parser": "^6.7.4",
-    "eslint": "^8.50.0",
-    "mocha": "^10.2.0",
-    "typescript": "^5.2.2"
-  },
-  "dependencies": {
-    "buntstift": "^5.0.2"
-  }
+	"name": "coding-circle",
+	"version": "1.0.0",
+	"description": "Challenges from TNW's Coding Circle",
+	"main": "app.js",
+	"scripts": {
+		"except-for-one": "tsc -b && node build/exceptForOne/main.js",
+		"test": "tsc -b && mocha --recursive \"./build/**/test.js\"",
+		"median": "tsc -b && node build/median/main.js",
+		"trie": "tsc -b && node build/trie/main.js",
+		"playlist": "tsc -b && node build/playlist/main.js"
+	},
+	"repository": {
+		"url": "https://github.com/SheepCreativeSoftware/coding-circle.git"
+	},
+	"keywords": [
+		"coding-circle"
+	],
+	"author": "Marina Egner",
+	"license": "MIT",
+	"devDependencies": {
+		"@typescript-eslint/eslint-plugin": "^6.7.4",
+		"@typescript-eslint/parser": "^6.7.4",
+		"eslint": "^8.50.0",
+		"tsx": "^4.19.2",
+		"typescript": "^5.2.2"
+	},
+	"dependencies": {
+		"@types/node": "^22.9.0",
+		"buntstift": "^5.0.2"
+	},
+	"engines": {
+		"node": ">=22.0.0"
+	}
 }
