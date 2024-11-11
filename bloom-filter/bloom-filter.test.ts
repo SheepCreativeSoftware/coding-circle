@@ -5,7 +5,7 @@ import { createBloomFilter } from './bloom-filter.js';
 
 describe('bloom filter', () => {
 	it('identify evil domains', () => {
-		const bloomFilter = createBloomFilter(512, 10);
+		const bloomFilter = createBloomFilter(500, 10);
 		bloomFilter.add('evil.com');
 		bloomFilter.add('malware.com');
 		bloomFilter.add('phishing.com');
@@ -15,7 +15,7 @@ describe('bloom filter', () => {
 		assert.ok(bloomFilter.has('phishing.com'));
 	});
 	it('identify non-evil domains', () => {
-		const bloomFilter = createBloomFilter(512, 10);
+		const bloomFilter = createBloomFilter(500, 10);
 		bloomFilter.add('evil.com');
 		bloomFilter.add('malware.com');
 		bloomFilter.add('phishing.com');

@@ -1,7 +1,7 @@
 import { createHash } from 'crypto';
 
 // 32 bits in an integer
-const NIBBLES_IN_INT = 8;
+const HEX_DIGITS_IN_INT32 = 8;
 
 const createBloomFilter = (size: number, hashIterations: number) => {
 	const bloomFilter = new Array(size).fill(false);
@@ -9,7 +9,7 @@ const createBloomFilter = (size: number, hashIterations: number) => {
 	const hashFunction = (value: string): number => {
 		const hash = createHash('sha1');
 		hash.update(value);
-		const hashSlice = hash.digest('hex').slice(0, NIBBLES_IN_INT);
+		const hashSlice = hash.digest('hex').slice(0, HEX_DIGITS_IN_INT32);
 		return parseInt(hashSlice, 16);
 	};
 

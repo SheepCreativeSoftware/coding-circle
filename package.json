@@ -5,7 +5,7 @@
 	"main": "app.js",
 	"scripts": {
 		"except-for-one": "tsc -b && node build/exceptForOne/main.js",
-		"test": "tsc -b && mocha --recursive \"./build/**/test.js\"",
+		"test": "npx tsx --test '**/*.test.ts'",
 		"median": "tsc -b && node build/median/main.js",
 		"trie": "tsc -b && node build/trie/main.js",
 		"playlist": "tsc -b && node build/playlist/main.js"
