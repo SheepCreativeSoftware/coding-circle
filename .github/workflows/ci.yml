@@ -34,17 +34,17 @@ jobs:
               with:
                   node-version: ${{ env.node_version }}
                   token: ${{ secrets.GH_DOTCOM_TOKEN }}
-                  cache: 'yarn'
-                  cache-dependency-path: 'yarn.lock'
+                  cache: 'npm'
+                  cache-dependency-path: 'package-lock.json'
                   registry-url: 'https://registry.npmjs.com'
             - name: Install dependencies
-              run: yarn install --frozen-lockfile --network-concurrency 1 --child-concurrency 1
+              run: npm ci
             - name: Lint code (ESLint)
-              run: yarn lint:eslint
+              run: npm run lint:eslint
             - name: Lint code (Prettier)
-              run: yarn lint:prettier
+              run: npm run lint:prettier
             - name: Lint code (TypeScript)
-              run: yarn lint:tsc
+              run: npm run lint:tsc
 
     test:
         runs-on: ubuntu-latest
@@ -56,10 +56,10 @@ jobs:
               with:
                   node-version: ${{ env.node_version }}
                   token: ${{ secrets.GH_DOTCOM_TOKEN }}
-                  cache: 'yarn'
-                  cache-dependency-path: 'yarn.lock'
+                  cache: 'npm'
+                  cache-dependency-path: 'package-lock.json'
                   registry-url: 'https://registry.npmjs.com'
             - name: Install dependencies
-              run: yarn install --frozen-lockfile --network-concurrency 1 --child-concurrency 1
+              run: npm ci
             - name: Run Unit Tests
-              run: yarn test
+              run: nmp run test
