@@ -6,7 +6,6 @@ import { Track } from './track';
 
 const firstTrackNumber = 1;
 const incrementByOne = 1;
-const jsonSpaceSize = 2;
 
 /** Creates a empty Playlist */
 class Playlist {
@@ -19,44 +18,43 @@ class Playlist {
 	/** Appends a new track to the list */
 	addTrackToList(interpret: string, trackName: string): void {
 		let currentTrack = this.root;
-		if(typeof currentTrack === 'undefined') {
+		if (typeof currentTrack === 'undefined') {
 			this.root = new Track(firstTrackNumber, interpret, trackName);
 			return;
 		}
 
 		// Loop though to get the last Track
-		while(typeof currentTrack.nextTrack !== 'undefined') currentTrack = currentTrack.nextTrack;
+		while (typeof currentTrack.nextTrack !== 'undefined') currentTrack = currentTrack.nextTrack;
 
-		if(typeof currentTrack.nextTrack === 'undefined') {
+		if (typeof currentTrack.nextTrack === 'undefined') {
 			// Appends the Track to the last element
 			currentTrack.addTrack(currentTrack.getTrackNumber() + incrementByOne, interpret, trackName);
 		}
 	}
 
-	/** Outputs the lsit as json stringified List */
-	outputList(): string {
-		return JSON.stringify(this.root, null, jsonSpaceSize);
+	outputList(): Track | undefined {
+		return JSON.parse(JSON.stringify(this.root));
 	}
 
 	/** Removes the next track and keep every following track */
 	private removeOnlyNextTrack(thatTrack: Track) {
-		if(thatTrack && thatTrack.nextTrack) thatTrack.setNextTrack(thatTrack.nextTrack.nextTrack);
+		if (thatTrack && thatTrack.nextTrack) thatTrack.setNextTrack(thatTrack.nextTrack.nextTrack);
 		else throw new Error('Cannot delete undefinded');
 	}
 
 	/** Removes elements begining at the position from the end */
 	removeTrackFromEnd(elementPosition: number) {
 		let currentTrack = this.root;
-		if(typeof currentTrack === 'undefined') throw new Error('Playlist has no track');
+		if (typeof currentTrack === 'undefined') throw new Error('Playlist has no track');
 
 		// Loop through every the complete list
-		while(typeof currentTrack.nextTrack !== 'undefined') {
+		while (typeof currentTrack.nextTrack !== 'undefined') {
 			let currentNextTrack = currentTrack as Track | undefined;
 
 			// Check whether the Track is followed by at least that many Track as we search for
-			for(let index = 0; index <= elementPosition; index++) {
-				if(typeof currentNextTrack === 'undefined') throw new Error('Tracklist shorter than search position');
-				if(index === elementPosition && typeof currentNextTrack.nextTrack === 'undefined') {
+			for (let index = 0; index <= elementPosition; index++) {
+				if (typeof currentNextTrack === 'undefined') throw new Error('Tracklist shorter than search position');
+				if (index === elementPosition && typeof currentNextTrack.nextTrack === 'undefined') {
 					// Found the last element if it has no next track and is on the right position
 					this.removeOnlyNextTrack(currentTrack);
 					return;

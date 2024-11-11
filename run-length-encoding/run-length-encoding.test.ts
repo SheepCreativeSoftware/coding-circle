@@ -1,6 +1,7 @@
-
-import * as assert from 'assert';
-import { decode, encode } from './main';
+/* eslint-disable no-magic-numbers */
+import { decode, encode } from './run-length-encoding.js';
+import { describe, it } from 'node:test';
+import assert from 'node:assert';
 
 
 describe('#Test Run length encoding', () => {

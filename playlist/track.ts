@@ -10,8 +10,8 @@ class Track {
 	nextTrack: Track | undefined;
 	constructor(trackNumber: number, interpret: string, trackName: string) {
 		this.trackNumber = trackNumber;
-		this.trackName = interpret;
-		this.interpret = trackName;
+		this.trackName = trackName;
+		this.interpret = interpret;
 	}
 
 	/** Adds a new Track that follows this track */
