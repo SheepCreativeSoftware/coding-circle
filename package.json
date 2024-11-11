@@ -4,11 +4,15 @@
 	"description": "Challenges from TNW's Coding Circle",
 	"main": "app.js",
 	"scripts": {
-		"except-for-one": "tsc -b && node build/exceptForOne/main.js",
-		"test": "npx tsx --test '**/*.test.ts'",
-		"median": "tsc -b && node build/median/main.js",
-		"trie": "tsc -b && node build/trie/main.js",
-		"playlist": "tsc -b && node build/playlist/main.js"
+		"lint": "npm run lint:eslint && npm run lint:prettier && npm run lint:tsc",
+		"lint:eslint": "npx eslint --cache --cache-strategy content",
+		"lint:eslint:fix": "npm run lint:eslint --fix",
+		"lint:prettier": "npx prettier --check \"**/*.{xml,json,yml,yaml,css}\"",
+		"lint:prettier:fix": "npx prettier --write \"**/*.{xml,json,yml,yaml,css}\"",
+		"lint:tsc": "npx tsc --project tsconfig.json --noEmit",
+		"test": "tsx --test 'src/**/*.test.ts'",
+		"test:watch": "tsx --test --watch \"**/*.test.ts\"",
+		"test:coverage": "tsx --test --experimental-test-coverage \"**/*.test.ts\""
 	},
 	"repository": {
 		"url": "https://github.com/SheepCreativeSoftware/coding-circle.git"
@@ -27,7 +31,9 @@
 	},
 	"dependencies": {
 		"@types/node": "^22.9.0",
-		"buntstift": "^5.0.2"
+		"buntstift": "^5.0.2",
+		"husky": "^9.1.6",
+		"prettier": "^3.3.3"
 	},
 	"engines": {
 		"node": ">=22.0.0"
