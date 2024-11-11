@@ -1,16 +1,16 @@
 import { createHash } from 'crypto';
 
 // 32 bits in an integer
-const HEX_DIGITS_IN_INT32 = 8;
+const BYTES_INT32 = 4;
 
 const createBloomFilter = (size: number, hashIterations: number) => {
 	const bloomFilter = new Array(size).fill(false);
 
 	const hashFunction = (value: string): number => {
-		const hash = createHash('sha1');
-		hash.update(value);
-		const hashSlice = hash.digest('hex').slice(0, HEX_DIGITS_IN_INT32);
-		return parseInt(hashSlice, 16);
+		const firstBytes = createHash('sha1').update(value).digest();
+
+		// Limit output to 32 bits
+		return firstBytes.readUint32BE(0);
 	};
 
 
