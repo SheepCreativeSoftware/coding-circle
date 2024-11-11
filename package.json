@@ -10,7 +10,7 @@
 		"lint:prettier": "npx prettier --check \"**/*.{xml,json,yml,yaml,css}\"",
 		"lint:prettier:fix": "npx prettier --write \"**/*.{xml,json,yml,yaml,css}\"",
 		"lint:tsc": "npx tsc --project tsconfig.json --noEmit",
-		"test": "tsx --test 'src/**/*.test.ts'",
+		"test": "tsx --test '**/*.test.ts'",
 		"test:watch": "tsx --test --watch \"**/*.test.ts\"",
 		"test:coverage": "tsx --test --experimental-test-coverage \"**/*.test.ts\""
 	},

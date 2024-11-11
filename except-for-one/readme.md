@@ -1,4 +1,4 @@
-
+Berechne jeweils das Produkt aus allen Zahlen in der Liste, bis auf eine.
     b * c * d * e * f = x
 a *     c * d * e * f = x
 a * b *     d * e * f = x
