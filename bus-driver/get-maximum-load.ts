@@ -15,7 +15,7 @@ type MaximumLoad = {
 }
 
 const getCurrentLoad = (previousLoad: number, count: number, type: BusStopType) => {
-	if(type === 'joined') return previousLoad + count;
+	if (type === 'joined') return previousLoad + count;
 	return previousLoad - count;
 };
 
@@ -27,16 +27,16 @@ const getMaximumLoad = (events: BusStops): MaximumLoad => {
 		until: 0,
 	};
 
-	for(let index = 0; index < events.length; index++) {
+	for (let index = 0; index < events.length; index++) {
 		const event = events[index];
 		currentLoad = getCurrentLoad(currentLoad, event.count, event.type);
 
-		if(maximumLoad.count < currentLoad) {
+		if (maximumLoad.count < currentLoad) {
 			maximumLoad.count = currentLoad;
 			maximumLoad.from = event.time;
 
 			// If at the last entry then asume the same time for `from` and `until`
-			if(events[index+1]) maximumLoad.until = events[index+1].time;
+			if (events[index + 1]) maximumLoad.until = events[index + 1].time;
 			else maximumLoad.until = event.time;
 		}
 	}
