@@ -13,7 +13,7 @@ const validateBrackets = (bracketString: string): boolean => {
 
 	if (bracketCount === 0) return true;
 
-	// Star signs can compensate missing brackets if there at least as many available
+	// Star signs can compensate missing brackets if there at least as much available
 	if (starCount !== 0 && bracketCount <= starCount) return true;
 
 	return false;
