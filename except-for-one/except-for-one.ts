@@ -1,11 +1,3 @@
-import { buntstift } from 'buntstift';
-
-/* eslint-disable no-magic-numbers */
-const input = [
-	27, 9, 12, 8, 17, 2,
-];
-/* eslint-enable no-magic-numbers */
-
 const one = 1;
 const minArraySize = 3;
 
@@ -21,7 +13,5 @@ const exceptForOne = (numbers: number[]): number[] => {
 	}
 	return result;
 };
-
-buntstift.info(JSON.stringify(exceptForOne(input)));
 
 export { exceptForOne };
