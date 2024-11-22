@@ -30,6 +30,7 @@ const sumOfArray = (array: number[]): number => {
 const validateBrackets = (bracketString: string): boolean => {
 	const charMap: number[] = [];
 	let nestingLevel = 0;
+
 	for (const char of bracketString) {
 		if (char === '(') charMap.push(1);
 		else if (char === ')') charMap.push(-1);
