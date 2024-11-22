@@ -57,5 +57,10 @@ describe('validateBrackets', () => {
 
 			assert.ok(!validateBrackets(brackets));
 		});
+		it('returns false when star signs to compensate is at wrong position', () => {
+			const brackets = '*(';
+
+			assert.ok(!validateBrackets(brackets));
+		});
 	});
 });
