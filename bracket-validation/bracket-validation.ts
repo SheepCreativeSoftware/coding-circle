@@ -11,7 +11,7 @@ const validateBrackets = (bracketString: string): boolean => {
 		else if (char === '*' && index === 0) possibleOpeningBracket++;
 		else if (char === '*') availableStars++;
 
-		// Bracket closed but was not open
+		// Bracket closed but was not open - try to compensate with a star
 		if (nestingLevel < 0) {
 			if (availableStars > 0) {
 				nestingLevel = 0;
@@ -28,7 +28,7 @@ const validateBrackets = (bracketString: string): boolean => {
 
 	if (nestingLevel === 0) return true;
 
-	// Star signs can compensate missing brackets if there at least as many available
+	// Star signs can compensate missing brackets if there is at least the same amount available
 	if (nestingLevel <= availableStars) return true;
 
 	return false;
