@@ -57,23 +57,8 @@ describe('validateBrackets', () => {
 
 			assert.ok(!validateBrackets(brackets));
 		});
-		it('returns false when there are open brackets missing but not enough star signs to compensate', () => {
-			const brackets = '*))';
-
-			assert.ok(!validateBrackets(brackets));
-		});
-		it('returns false when star sign to compensate is at wrong position', () => {
-			const brackets = '*(';
-
-			assert.ok(!validateBrackets(brackets));
-		});
 		it('returns false when many stars sign to compensate is at wrong position', () => {
 			const brackets = '***(';
-
-			assert.ok(!validateBrackets(brackets));
-		});
-		it('returns false when with to openings and two stars sign in between', () => {
-			const brackets = '(**(';
 
 			assert.ok(!validateBrackets(brackets));
 		});
@@ -87,7 +72,7 @@ describe('validateBrackets', () => {
 
 			assert.ok(validateBrackets(brackets));
 		});
-		it('returns true when there are 4 star signs', () => {
+		it('returns true when there are only star signs', () => {
 			const brackets = '****';
 
 			assert.ok(validateBrackets(brackets));

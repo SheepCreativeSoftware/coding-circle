@@ -1,13 +1,13 @@
 // eslint-disable-next-line complexity
-const isBalanced = (bracketString: string): boolean => {
+const isBalanced = (bracketString: string, openChar: string, closeChar: string): boolean => {
 	let nestingLevel = 0;
 	let availableStars = 0;
 	let possibleOpeningBracket = 0;
 	for (let index = 0; index < bracketString.length; index++) {
 		const char = bracketString[index];
 
-		if (char === '(') nestingLevel++;
-		else if (char === ')') nestingLevel--;
+		if (char === openChar) nestingLevel++;
+		else if (char === closeChar) nestingLevel--;
 		else if (char === '*' && nestingLevel === 0) possibleOpeningBracket++;
 		else if (char === '*') availableStars++;
 
@@ -24,7 +24,6 @@ const isBalanced = (bracketString: string): boolean => {
 
 		// Nesting level could not be compensated with a star
 		if (nestingLevel < 0) return false;
-		if (index === bracketString.length - 1 && char === '(') return false;
 	}
 
 	// Star signs can compensate missing brackets if there is at least the same amount available
@@ -32,12 +31,12 @@ const isBalanced = (bracketString: string): boolean => {
 };
 
 const reverseBracketString = (bracketString: string): string => {
-	return bracketString.split('').reverse().join('').replaceAll('(', '_').replaceAll(')', '(').replaceAll('_', ')');
+	return bracketString.split('').reverse().join('');
 };
 
 const validateBrackets = (bracketString: string): boolean => {
-	if (!isBalanced(bracketString)) return false;
-	return isBalanced(reverseBracketString(bracketString));
+	if (!isBalanced(bracketString, '(', ')')) return false;
+	return isBalanced(reverseBracketString(bracketString), ')', '(');
 };
 
 export { validateBrackets };
