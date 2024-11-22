@@ -1,9 +1,9 @@
 /* eslint-disable no-magic-numbers */
 import { describe, it } from 'node:test';
 import assert from 'node:assert';
-import { validateBrackets } from './bracket-validation.js';
+import { validateBrackets } from './bracket-validation-single-pass.js';
 
-describe('validateBrackets', () => {
+describe('validateBrackets [SINGLE-PASS]', () => {
 	describe('without special star sign', () => {
 		it('returns true when there are as many opening as well as closing brackets', () => {
 			const brackets = '()';
