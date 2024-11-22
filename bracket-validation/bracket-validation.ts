@@ -24,6 +24,7 @@ const validateBrackets = (bracketString: string): boolean => {
 
 		// Nesting level could not be compensated with a star
 		if (nestingLevel < 0) return false;
+		if (index === bracketString.length - 1 && char === '(') return false;
 	}
 
 	// Star signs can compensate missing brackets if there is at least the same amount available

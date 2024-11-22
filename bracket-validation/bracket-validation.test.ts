@@ -72,6 +72,11 @@ describe('validateBrackets', () => {
 
 			assert.ok(!validateBrackets(brackets));
 		});
+		it('returns false when with to openings and two stars sign in between', () => {
+			const brackets = '(**(';
+
+			assert.ok(!validateBrackets(brackets));
+		});
 		it('returns true when star sign compensates a closing bracket', () => {
 			const brackets = '*)';
 
