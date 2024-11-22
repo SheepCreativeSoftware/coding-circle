@@ -67,6 +67,11 @@ describe('validateBrackets', () => {
 
 			assert.ok(!validateBrackets(brackets));
 		});
+		it('returns false when many stars sign to compensate is at wrong position', () => {
+			const brackets = '***(';
+
+			assert.ok(!validateBrackets(brackets));
+		});
 		it('returns true when star sign compensates a closing bracket', () => {
 			const brackets = '*)';
 
