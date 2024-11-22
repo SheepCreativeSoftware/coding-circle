@@ -1,5 +1,5 @@
 // eslint-disable-next-line complexity
-const validateBrackets = (bracketString: string): boolean => {
+const isBalanced = (bracketString: string): boolean => {
 	let nestingLevel = 0;
 	let availableStars = 0;
 	let possibleOpeningBracket = 0;
@@ -29,6 +29,15 @@ const validateBrackets = (bracketString: string): boolean => {
 
 	// Star signs can compensate missing brackets if there is at least the same amount available
 	return nestingLevel === 0 || nestingLevel <= availableStars;
+};
+
+const reverseBracketString = (bracketString: string): string => {
+	return bracketString.split('').reverse().join('').replaceAll('(', '_').replaceAll(')', '(').replaceAll('_', ')');
+};
+
+const validateBrackets = (bracketString: string): boolean => {
+	if (!isBalanced(bracketString)) return false;
+	return isBalanced(reverseBracketString(bracketString));
 };
 
 export { validateBrackets };
