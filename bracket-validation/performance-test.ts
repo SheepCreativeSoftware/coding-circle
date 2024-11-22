@@ -7,10 +7,10 @@ const bracketsWithStars = '(())((*))(*((()))()***()()(**))((*)))'.repeat(100_000
 
 console.log('-------[MULTI-PASS]--------');
 console.time('Normal');
-for (let i = 0; i < 1000; i++) console.log(validateBrackets(brackets));
+for (let i = 0; i < 1000; i++) validateBrackets(brackets);
 console.timeEnd('Normal');
 console.time('Stars');
-for (let i = 0; i < 1000; i++) console.log(validateBrackets(bracketsWithStars));
+for (let i = 0; i < 1000; i++) validateBrackets(bracketsWithStars);
 console.timeEnd('Stars');
 console.log('-------[SINGLE-PASS]-------');
 console.time('Normal');
