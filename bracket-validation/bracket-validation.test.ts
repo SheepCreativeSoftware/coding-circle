@@ -37,8 +37,13 @@ describe('validateBrackets', () => {
 
 			assert.ok(validateBrackets(brackets));
 		});
-		it('returns true when multiple missing brackets can be compensated by star signs', () => {
-			const brackets = '((*)*())';
+		it('returns true when multiple missing closing brackets can be compensated by star signs', () => {
+			const brackets = '((*))*)())';
+
+			assert.ok(validateBrackets(brackets));
+		});
+		it('returns true when multiple missing open brackets can be compensated by star signs', () => {
+			const brackets = '(((*)(*())';
 
 			assert.ok(validateBrackets(brackets));
 		});
@@ -57,10 +62,15 @@ describe('validateBrackets', () => {
 
 			assert.ok(!validateBrackets(brackets));
 		});
-		it('returns false when star signs to compensate is at wrong position', () => {
+		it('returns false when star sign to compensate is at wrong position', () => {
 			const brackets = '*(';
 
 			assert.ok(!validateBrackets(brackets));
+		});
+		it('returns true when star sign compensates a closing bracket', () => {
+			const brackets = '*)';
+
+			assert.ok(validateBrackets(brackets));
 		});
 	});
 });
