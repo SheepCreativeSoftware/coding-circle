@@ -1,7 +1,7 @@
 /* eslint-disable no-magic-numbers */
 import { describe, it } from 'node:test';
 import assert from 'node:assert';
-import { validateBrackets } from './bracket-validation.js';
+import { validateBrackets } from './bracket-validation-single-pass.js';
 
 describe('validateBrackets', () => {
 	describe('without special star sign', () => {
