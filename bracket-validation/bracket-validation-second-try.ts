@@ -1,57 +1,48 @@
-const replaceCharAtPosition = (str: string, replacement: string, position: number) => {
-	return `${str.substring(0, position)}${replacement}${str.substring(position + replacement.length)}`;
+const countAvailableStars = (array: number[]): number => {
+	return array.reduce((previous, current, index) => {
+		// Ignore first index as it only can be a opening bracket
+		if (index !== 0 && current === 0) return previous + 1;
+		return previous;
+	}, 0);
 };
 
-const replaceStarSignAndTryAgain = (replaceLast: boolean, replacement: string) => {
-	return (bracketString: string, missingBrackets: number) => {
-		let newBracketString = bracketString;
+const calcBalanceReducer = (previous: number, current: number, index: number, array: number[]): number => {
+	const result = previous + current;
 
-		for (let index = 0; index < missingBrackets; index++) {
-			let position = -1;
-			if (replaceLast) position = newBracketString.lastIndexOf('*');
-			else position = newBracketString.indexOf('*');
+	// Missing opening bracket
+	if (result < 0) {
+		const firstStarPosition = array.indexOf(0);
+		if (firstStarPosition !== -1 && firstStarPosition < index) {
+			// Consider star as a opening bracket
+			array[firstStarPosition] = 1;
 
-			if (position === -1) return false;
-
-			newBracketString = replaceCharAtPosition(newBracketString, replacement, position);
+			return 0;
 		}
+		throw new Error('Missing opening bracket');
+	}
 
-		return validateBrackets(newBracketString);
-	};
-};
+	// Missing closing bracket
+	if (index === array.length - 1 && result > 0 && countAvailableStars(array) >= result) return 0;
 
-const replaceFirstStarAndTryAgain = replaceStarSignAndTryAgain(false, '(');
-const replaceLastStarAndTryAgain = replaceStarSignAndTryAgain(true, ')');
-
-const sumOfArray = (array: number[]): number => {
-	return array.reduce((previous, current) => previous + current);
+	return result;
 };
 
 const validateBrackets = (bracketString: string): boolean => {
 	const charMap: number[] = [];
-	let nestingLevel = 0;
 
 	for (const char of bracketString) {
 		if (char === '(') charMap.push(1);
 		else if (char === ')') charMap.push(-1);
 		else if (char === '*') charMap.push(0);
-
-		nestingLevel = sumOfArray(charMap);
-
-		// No stars to compensate missing opening bracket
-		if (nestingLevel < 0 && !charMap.includes(0)) return false;
 	}
 
-	if (nestingLevel === 0) return true;
+	try {
+		const balance = charMap.reduce(calcBalanceReducer, 0);
 
-	// No stars to compensate missing brackets
-	if (!bracketString.includes('*')) return false;
-
-	// Missing closing bracket
-	if (nestingLevel > 0) return replaceLastStarAndTryAgain(bracketString, nestingLevel);
-
-	// Missing opening bracket
-	return replaceFirstStarAndTryAgain(bracketString, Math.abs(nestingLevel));
+		return balance === 0;
+	} catch {
+		return false;
+	}
 };
 
 export { validateBrackets };
